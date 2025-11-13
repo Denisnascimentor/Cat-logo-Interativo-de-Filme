@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Catálogo Interativo de Filmes e Séries</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
   <header>
@@ -22,16 +22,32 @@
 
   <main>
     <section class="search-section">
-      <input type="text" id="search-input" placeholder="Buscar filmes ou séries..." disabled />
-      <button disabled>Buscar</button>
+      <input type="text" id="search-input" placeholder="Buscar filmes ou séries..."  />
+      <button class="button">Buscar</button>
     </section>
 
-    <section class="filters">
-      <label for="genre-select">Filtrar por gênero:</label>
-      <select id="genre-select" disabled>
-        <option value="">Todos</option>
-      </select>
-    </section>
+<label class="filter-label">Filtrar por gênero:</label>
+
+<div class="select-wrapper">
+  <button class="select-trigger" type="button">Todos</button>
+
+  <div class="options">
+    <div class="option" data-value="">Todos</div>
+    <div class="option" data-value="aventura">Aventura</div>
+    <div class="option" data-value="acao">Ação</div>
+    <div class="option" data-value="anime">Anime</div>
+    <div class="option" data-value="comedia">Comédia</div>
+    <div class="option" data-value="drama">Drama</div>
+    <div class="option" data-value="guerra">Guerra</div>
+    <div class="option" data-value="romance">Romance</div>
+    <div class="option" data-value="suspense">Suspense</div>
+    <div class="option" data-value="terror">Terror</div>
+    <div class="option" data-value="nacional">Nacional</div>
+    <div class="option" data-value="infantil">Infantil</div>
+    <div class="option" data-value="historia">História</div>
+    <div class="option" data-value="fantasia">Fantasia</div>
+  </div>
+</div>
 
     <section id="catalog" class="catalog-grid">
       <div class="placeholder">
@@ -40,9 +56,9 @@
     </section>
 
     <section id="pagination" class="pagination">
-      <button disabled>Anterior</button>
+      <button>Anterior</button>
       <span>Página 1</span>
-      <button disabled>Próxima</button>
+      <button >Próxima</button>
     </section>
 
     <section id="details" class="details hidden">
@@ -62,7 +78,9 @@
   </main>
 
   <footer>
-    <p>Desenvolvido por Denis Rodrigues & José Maranhão — UESPI • 2025</p>
+    <p>Desenvolvido por Denis do Nascimento Rodrigues & José Maranhão — UESPI • 2025</p>
   </footer>
+
+  <script src="/js/script.js"></script>
 </body>
 </html>
