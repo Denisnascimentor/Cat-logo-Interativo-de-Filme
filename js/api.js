@@ -1,23 +1,28 @@
 const apiKey = "289a0351";
 const catalog = document.getElementById("catalog");
+let count = 1;
+const nextBtn = document.getElementById("next-btn");
+const previousBtn = document.getElementById("previous-btn");
+const pageView = document.getElementById("page")
+const backHome = document.getElementById("home");
 
-function listarFilmes() {
-  const ano = new Date().getFullYear();
-  const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=movie&y=${ano}&type=movie&page=1`
+async function listarFilmes() {
+  const year = new Date().getFullYear();
+  const urlMovies = `https://www.omdbapi.com/?apikey=${apiKey}&s=movie&type=movie&y=${year}&page=${count}`;
+  const urlSeries = `https://www.omdbapi.com/?apikey=${apiKey}&s=series&type=series&y=${year}&page=${count}`;
 
-  // catalog.innerHTML = "<p>carregando filmes...<p>";
+  const resMovies = await fetch(urlMovies).then(r => r.json());
+  const resSeries = await fetch(urlSeries).then(r => r.json());
 
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      if (data.Response === "False") {
-        catalog.innerHTML = `<p>${data.Error}<p>`;
-        return;
-      }
+  // Junta os dois resultados (se existirem)
+  const movies = resMovies.Search || [];
+  const series = resSeries.Search || [];
+
+  const fullItems = [...movies, ...series];
 
       catalog.innerHTML = "";
 
-      data.Search.forEach(movie => {
+      fullItems.forEach(movie => {
         const card = document.createElement("div");
         card.classList.add("catalog-card");
 
@@ -31,11 +36,36 @@ function listarFilmes() {
 
         catalog.appendChild(card);
       });
-    })
-    .catch(erro => {
-      console.error(erro);
-      catalog.innerHTML = "<p>Erro ao buscar Filmes.<p>"
-    });
+
 }
 
+function pagination() {
+  function previous() {
+    if (count > 1) {
+      count --;
+      listarFilmes();
+
+      pageView.textContent = `Página ${count}`;
+    }
+  }; 
+  
+  function next() {
+    count ++;
+    listarFilmes();
+
+    pageView.textContent = `Página ${count}`;
+  };
+
+  function home() {
+    count = 1;
+    listarFilmes();
+  }
+
+  previousBtn.addEventListener("click", previous);
+  nextBtn.addEventListener("click", next);
+  backHome.addEventListener("click", home);
+}
+
+
 listarFilmes();
+pagination();
