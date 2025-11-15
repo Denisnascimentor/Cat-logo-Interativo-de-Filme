@@ -10,8 +10,8 @@ body {
     line-height: 1.5;
 }
 
-@media(min-width: 768px){
-    /* ======= HEADER ======= */
+@media(min-width: 368px){
+
     header {
         background-color: #1f1f1f;
         padding: 1rem 2rem;
@@ -19,6 +19,10 @@ body {
         flex-direction: column;
         align-items: center;
         text-align: center;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
     }
 
     header div {
@@ -83,7 +87,6 @@ body {
         background-color: #555;
     }
 
-    /*bortão de fitro a baixo*/
     .filter-label {
     color: white;
     font-family: Arial, sans-serif;
@@ -141,7 +144,7 @@ body {
     background-color: #555;
     }
 
-    /*Grid onde vai ficar os filmes*/
+
     .catalog-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -164,6 +167,16 @@ body {
         font-size: 1rem;
         padding: 0.5rem;
         text-align: center;
+    }
+
+    .catalog-card {
+        text-align: center;
+        background-color: #222;
+        border-radius: 4px;
+    }
+
+    .catalog-card img {
+        border-radius: 4px;
     }
 
 
@@ -213,14 +226,14 @@ body {
         background-color: #1a1a1a;
         padding: 1.5rem;
         border-radius: 8px;
-        max-width: 800px;
+        width: 800px;
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
 
     .details img {
-        width: 100%;
+        width: 50%;
         border-radius: 6px;
     }
 
