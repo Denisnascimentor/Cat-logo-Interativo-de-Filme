@@ -74,7 +74,7 @@ async function renderCatalog(page = 1, searchTerm = "", genreFilter = "") {
   items.forEach(data => {
     const card = document.createElement("div");
     card.classList.add("catalog-card");
-    const poster = data.Poster !== "N/A" ? data.Poster : "img/no-poster.jpeg";
+    const poster = data.Poster !== "N/A" ? data.Poster : "assets/no-poster.jpeg";
 
     card.innerHTML = `
       <img src="${poster}" class="movie-poster">
@@ -95,7 +95,7 @@ async function renderCatalog(page = 1, searchTerm = "", genreFilter = "") {
 
 
 function openDetails(data) {
-  const poster = data.Poster !== "N/A" ? data.Poster : "img/no-poster.jpeg";
+  const poster = data.Poster !== "N/A" ? data.Poster : "assets/no-poster.jpeg";
 
   document.getElementById("poster").src = poster;
   document.getElementById("title").textContent = data.Title;
